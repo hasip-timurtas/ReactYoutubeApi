@@ -7,14 +7,17 @@ export default class VideoList extends Component {
     }
 
     render() {
-        var videoData = this.props.videos.map(video => {
-            return <VideoListItem key={video.id.videoId} video={video} />;
+        var videoItems = this.props.videos.map(video => {
+            return (<VideoListItem
+                onVideoSelect={this.props.onVideoSelect}
+                key={video.etag}
+                video={video}/>);
 
         });
 
         return (
             <ul className="col-md-4 list-group">
-                {videoData}
+                {videoItems}
             </ul>
         );
     }
